@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karang Taruna Dusun Bogor</title>
+  <meta name="description" content="Website Karang Taruna Dusun Bogor — ruang kolaborasi pemuda yang dinamis dan transparan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="img/rebog.webp">
+  <style>
+    :root{
+      /* Tema cerah tapi tidak putih polos */
+      --bg1:#e8eef7;   /* biru muda lembut */
+      --bg2:#f6f9ff;   /* abu kebiruan terang */
+      --bg3:#e8eef7;   /* kembali ke lembut */
+      --card:#ffffff;
+      --text:#0c1020;
+      --muted:#4a5162;
+      --brand1:#3f6cff; /* biru energik */
+      --brand2:#6fd0ff; /* aqua segar */
+      --warm:#ff9ac2;   /* aksen hangat tipis */
+      --ring:0 0 0 3px rgba(63,108,255,.25);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 380px at 15% -10%, rgba(255,154,194,.18), transparent 60%),
+        radial-gradient(1100px 520px at 110% 10%, rgba(111,208,255,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 40%, var(--bg3));
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(1120px,92%);margin-inline:auto}
+    .title{font-family:Outfit,Inter,sans-serif}
+    .muted{color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:999px;font-weight:650}
+    .btn-primary{background:linear-gradient(135deg,var(--brand1),var(--brand2));color:#061026}
+    .btn-primary:hover{filter:brightness(1.08)}
+    .btn-ghost{border:1px solid rgba(15,23,42,.12);background:rgba(255,255,255,.6);backdrop-filter:blur(6px)}
+    .tag{display:inline-block;padding:.35rem .7rem;border:1px solid rgba(15,23,42,.12);border-radius:999px;font-size:.8rem;color:var(--muted)}
+    .card{background:var(--card);border:1px solid rgba(15,23,42,.08);border-radius:var(--radius);box-shadow:0 10px 28px rgba(15,23,42,.06)}
+    .card.pad{padding:1.2rem}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,23,42,.06)}
+    .nav .row{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding:.8rem 0;}
+.nav .row > .brand{flex:1 1 auto;min-width:0}
+.nav .row > .menu{margin-left:auto;flex:0 0 auto;white-space:nowrap}
+.nav .row > .hamb{flex:0 0 auto}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
+    .brand .logo{width:36px;height:36px;border-radius:12px;background:conic-gradient(from 140deg, var(--brand1), var(--brand2), var(--warm));display:grid;place-items:center;box-shadow:0 0 0 3px rgba(15,23,42,.06)}
+    .menu{display:flex;gap:1rem;align-items:center}
+    .menu a{display:inline-block;padding:.5rem .8rem;border-radius:10px;line-height:1;vertical-align:middle}
+    .menu a:hover{background:rgba(15,23,42,.06)}
+    .hamb{display:none}
+
+    /* HERO */
+    .hero{position:relative;padding:5.2rem 0 3.2rem;overflow:hidden}
+    .hero .wrap{display:grid;grid-template-columns:1fr;gap:1.4rem}
+    .eyebrow{font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:.6rem}
+    .spark{width:18px;height:18px;background:radial-gradient(circle at 30% 30%, #fff, #cbeaff 55%, transparent 60%);border-radius:50%;filter:blur(.2px);box-shadow:0 0 20px rgba(111,208,255,.65)}
+    .hero h1{font-size:clamp(2rem, 4vw + .5rem, 3rem);margin:.6rem 0 1rem}
+    .hero h1 .gradient{background:linear-gradient(120deg,var(--brand1),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.05rem;line-height:1.75;color:#334155}
+    .cta{display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+
+    /* BLOB dekoratif halus */
+    .blob{position:absolute;inset:-60px auto auto -60px;width:360px;height:360px;background:radial-gradient(circle at 30% 30%, rgba(255,154,194,.45), rgba(255,154,194,.15) 60%, transparent 70%);filter:blur(12px);border-radius:50%;pointer-events:none}
+    .blob2{position:absolute;right:-80px;top:-40px;width:380px;height:380px;background:radial-gradient(circle at 30% 30%, rgba(111,208,255,.45), rgba(111,208,255,.15) 60%, transparent 70%);filter:blur(12px);border-radius:50%;pointer-events:none}
+
+    /* SECTION */
+    section{padding:3.4rem 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:1.2rem}
+    .section-head h2{font-size:1.8rem;margin:0}
+
+    /* GALLERY */
+    .gallery{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}
+    .gallery .g1{grid-column:span 6}
+    .gallery .g2{grid-column:span 6}
+    .gallery .g3{grid-column:span 6}
+    .ph{position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(15,23,42,.1)}
+    .ph img{aspect-ratio:16/11;object-fit:cover;transition:transform .5s ease}
+    .ph:hover img{transform:scale(1.05)}
+
+    /* TEAM */
+    .team{display:grid;gap:1rem;grid-template-columns:repeat(12,1fr)}
+    .member{grid-column:span 3;display:grid;gap:.7rem;justify-items:center;text-align:center}
+    .avatar{width:96px;height:96px;border-radius:22px;overflow:hidden;border:1px solid rgba(15,23,42,.12)}
+
+    /* KEUANGAN */
+    .keu-wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+    /* BERITA (ticker) */
+    .ticker-outer{overflow:hidden}
+    .ticker{display:flex;gap:1rem;white-space:nowrap;animation:scroll 28s linear infinite}
+    .news{display:inline-block;vertical-align:top;width:260px;padding:.8rem;border-radius:14px}
+    .news img{width:100%;height:140px;object-fit:cover;border-radius:12px;border:1px solid rgba(15,23,42,.08)}
+
+    /* FOOTER */
+    footer{padding:2.4rem 0;border-top:1px solid rgba(15,23,42,.08);background:linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.9))}
+    .foot{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:2rem}
+    .socials{display:flex;gap:.7rem}
+    .socials a{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(15,23,42,.12)}
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .menu{display:none !important}
+      .hamb{display:grid;place-items:center;border:1px solid rgba(15,23,42,.12);border-radius:12px;width:44px;height:44px}
+      .drawer{position:fixed;inset:0;display:none!important;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);z-index:60}
+.drawer.open{display:block!important}
+      .drawer.open{display:block}
+      .drawer .sheet{position:absolute;right:0;top:0;height:100%;width:min(86%,340px);background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-left:1px solid rgba(15,23,42,.12);padding:1rem}
+      .drawer a{display:block;padding:.9rem .8rem;border-radius:12px;margin:.2rem 0;border:1px solid rgba(15,23,42,.08)}
+      .member{grid-column:span 6}
+      .gallery .g1,.gallery .g2,.gallery .g3{grid-column:span 6}
+      .foot{grid-template-columns:1fr}
+    }
+      .hamb{display:grid;place-items:center;border:1px solid rgba(15,23,42,.12);border-radius:12px;width:44px;height:44px}
+      .drawer{position:fixed;inset:0;display:none;background:rgba(0,0,0,.45);backdrop-filter:blur(10px);}
+      .drawer.open{display:block}
+      .drawer .sheet{position:absolute;right:0;top:0;height:100%;width:min(86%,340px);background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-left:1px solid rgba(15,23,42,.12);padding:1rem}
+      .drawer a{display:block;padding:.9rem .8rem;border-radius:12px;margin:.2rem 0;border:1px solid rgba(15,23,42,.08)}
+      .member{grid-column:span 6}
+      .gallery .g1,.gallery .g2,.gallery .g3{grid-column:span 6}
+      .foot{grid-template-columns:1fr}
+    }
+
+    /* ANIMS */
+    .reveal{opacity:0;transform:translateY(14px);transition:all .6s ease}
+    .reveal.show{opacity:1;transform:none}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .focusable:focus{outline:none;box-shadow:var(--ring)}
+  @media (min-width: 981px){.hamb{display:none !important}.menu{display:flex !important}}
+  /* Tambahan: perbesar galeri di mobile/tablet & tata berita gambar di atas */
+  @media (max-width: 980px){
+    .gallery .g1,.gallery .g2,.gallery .g3{grid-column:span 12}
+    .ph img{aspect-ratio:4/3}
+    .news{width:220px}
+    .news img{height:130px}
+  }
+  @media (max-width: 680px){
+    .news{width:200px}
+    .news img{height:120px}
+  }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container row">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Karang Taruna Dusun Bogor</span>
+      </a>
+      <div class="menu" aria-label="navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#tim">Struktur Organisasi</a>
+        <a href="#keuangan">Keuangan</a>
+        <a href="#berita">Berita</a>
+      </div>
+      <button class="hamb focusable" id="hamb" aria-label="Buka menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+    <!-- Drawer -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="sheet">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.4rem">
+          <div class="brand"><div class="logo"></div><span>Menu</span></div>
+          <button class="hamb focusable" id="closeDrawer" aria-label="Tutup menu">✕</button>
+        </div>
+        <a href="#tentang" onclick="closeDrawer()">Tentang</a>
+        <a href="#galeri" onclick="closeDrawer()">Galeri</a>
+        <a href="#tim" onclick="closeDrawer()">Struktur Organisasi</a>
+        <a href="#keuangan" onclick="closeDrawer()">Keuangan</a>
+        <a href="#berita" onclick="closeDrawer()">Berita</a>
+        <a href="#gabung" onclick="closeDrawer()" class="btn btn-primary" style="margin-top:.6rem;justify-content:center">Gabung Komunitas</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="blob" aria-hidden="true"></div>
+    <div class="blob2" aria-hidden="true"></div>
+    <div class="container wrap">
+      <div>
+        <div class="eyebrow"><span class="spark"></span><span>Ruang Gerak Pemuda Dusun Bogor</span></div>
+        <h1 class="title">Berdaya, Berkarya, <span class="gradient">Bersama</span>.</h1>
+        <p class="lead">Komunitas anak muda yang bergerak di sosial, olahraga, digitalisasi UMKM, dan literasi—dengan semangat <b>Solidaritas</b> & <b>Saling Menjaga</b>.</p>
+        <div class="cta">
+          <a href="#gabung" class="btn btn-primary">Gabung Komunitas</a>
+          <a href="#keuangan" class="btn btn-ghost">Transparansi Keuangan</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TENTANG (satu kolom, paragraf justify) -->
+  <section id="tentang">
+    <div class="container">
+      <h2 class="title" style="margin:.2rem 0 1rem">Tentang Kami</h2>
+      <p class="muted" style="font-size:1.05rem;line-height:1.9;text-align:justify;margin-bottom:1rem">Karang Taruna Dusun Bogor adalah wadah pembinaan dan pengembangan generasi muda. Kami fokus pada penguatan karakter, peningkatan keterampilan, dan kolaborasi lintas komunitas untuk menciptakan dampak positif yang berkelanjutan. Sebagai komunitas pemuda yang bersemangat, kami menyelenggarakan berbagai inisiatif: pendampingan UMKM, olahraga pemuda, edukasi anti‑korupsi, hingga literasi digital. Kami terbuka untuk kolaborasi dari siapa pun yang ingin bergerak bersama. Kami percaya perubahan dimulai dari hal sederhana: saling dukung antarwarga, gotong royong, dan keberanian mencoba hal baru untuk Dusun Bogor yang lebih maju.</p>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <span class="tag">Kolaboratif</span>
+        <span class="tag">Inklusif</span>
+        <span class="tag">Berintegritas</span>
+        <span class="tag">Digital Mindset</span>
+      </div>
+      <div class="card pad" style="margin-top:1rem">
+        <b>Moto Organisasi</b>
+        <p class="muted" style="margin:.35rem 0 0">Solidaritas • Saling Menjaga • Berkembang Bersama</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI -->
+  <section id="galeri">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="title">Galeri</h2>
+        <span class="muted">Momen terbaik dari kegiatan kami</span>
+      </div>
+      <div class="gallery">
+        <figure class="ph g1 reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Kegiatan pemuda di balai dusun"></figure>
+        <figure class="ph g2 reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1506097425191-7ad538b29cef?q=80&w=1600&auto=format&fit=crop" alt="Pelatihan digital untuk UMKM"></figure>
+        <figure class="ph g3 reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1600&auto=format&fit=crop" alt="Turnamen olahraga antar RT"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIM -->
+  <section id="tim">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="title">Struktur Organisasi</h2>
+        <span class="muted">Struktur kepengurusan Karang Taruna Dusun Bogor</span>
+      </div>
+      <div class="card pad reveal" style="overflow-x:auto">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600&auto=format&fit=crop" alt="Struktur Organisasi" style="width:100%;max-width:900px;display:block;margin:auto">
+        <p class="muted" style="text-align:center;margin-top:.8rem">(Ganti gambar di atas dengan bagan struktur organisasi resmi Karang Taruna Dusun Bogor)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEUANGAN -->
+  <section id="keuangan">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="title">Informasi Keuangan</h2>
+        <span class="muted">Transparansi dana komunitas</span>
+      </div>
+      <div class="card pad keu-wrap reveal">
+        <p class="muted" style="margin:0">Laporan pemasukan dan pengeluaran diperbarui berkala. Tekan tombol untuk membuka spreadsheet keuangan.</p>
+        <!-- GANTI link di bawah ini dengan spreadsheet asli -->
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/ID-SPREADSHEET-KEUANGAN">Buka Spreadsheet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BERITA & KEGIATAN (Ticker) -->
+  <section id="berita">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="title">Berita & Kegiatan</h2>
+        <span class="muted">Update dari kami dan media</span>
+      </div>
+      <div class="card pad ticker-outer">
+        <div class="ticker">
+          <a class="news card pad" href="https://contoh.link/berita1" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1520975922284-7b683dc428c9?q=80&w=400&auto=format&fit=crop" alt="Pelatihan Canva">
+            <b>Pelatihan Canva: 30 UMKM Ikut</b>
+          </a>
+          <a class="news card pad" href="https://contoh.link/berita2" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?q=80&w=400&auto=format&fit=crop" alt="Turnamen Voli">
+            <b>Turnamen Voli RT 01 Juara</b>
+          </a>
+          <a class="news card pad" href="https://contoh.link/berita3" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1541534401786-2077eed87a72?q=80&w=400&auto=format&fit=crop" alt="Kerja Bakti">
+            <b>Kerja Bakti Bersih Sungai</b>
+          </a>
+          <!-- duplikasi supaya loop mulus -->
+          <a class="news card pad" href="https://contoh.link/berita1" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1520975922284-7b683dc428c9?q=80&w=400&auto=format&fit=crop" alt="Pelatihan Canva">
+            <b>Pelatihan Canva: 30 UMKM Ikut</b>
+          </a>
+          <a class="news card pad" href="https://contoh.link/berita2" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?q=80&w=400&auto=format&fit=crop" alt="Turnamen Voli">
+            <b>Turnamen Voli RT 01 Juara</b>
+          </a>
+          <a class="news card pad" href="https://contoh.link/berita3" target="_blank" rel="noopener">
+            <img src="https://images.unsplash.com/photo-1541534401786-2077eed87a72?q=80&w=400&auto=format&fit=crop" alt="Kerja Bakti">
+            <b>Kerja Bakti Bersih Sungai</b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GABUNG -->
+  <section id="gabung">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="title">Gabung Komunitas</h2>
+        <span class="muted">Yuk bareng-bareng berkarya untuk Dusun Bogor</span>
+      </div>
+      <div class="card pad reveal" style="display:grid;gap:.9rem">
+        <p class="muted">Klik tombol di bawah untuk bergabung via WhatsApp. Tulis: <i>Nama – RT – Minat Divisi</i> (contoh: Sinta – RT 02 – Ekraf).</p>
+        <div>
+          <!-- GANTI nomor berikut -->
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/6281234567890?text=Halo%20Karang%20Taruna%20Dusun%20Bogor%2C%20saya%20ingin%20bergabung!">Gabung via WhatsApp</a>
+          <a class="btn btn-ghost" style="margin-left:.4rem" href="mailto:karangtaruna.bogor@contoh.id">Kirim Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <div class="brand"><div class="logo"></div><span>Karang Taruna Dusun Bogor</span></div>
+          <p class="muted" style="margin:.6rem 0 0">Balai Dusun Bogor, Desa Kenteng, Bandungan, Kab. Semarang</p>
+          <div class="socials" style="margin-top:.8rem">
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <b>Link Cepat</b>
+          <ul style="list-style:none;padding:0;margin:.6rem 0 0;line-height:1.9">
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#gabung">Gabung</a></li>
+            <li><a href="#keuangan">Informasi Keuangan</a></li>
+          </ul>
+        </div>
+        <div>
+          <b>Kontak</b>
+          <ul style="list-style:none;padding:0;margin:.6rem 0 0;line-height:1.9" class="muted">
+            <li>Email: <a href="mailto:karangtaruna.bogor@contoh.id">karangtaruna.bogor@contoh.id</a></li>
+            <li>WA: <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">+62 812‑3456‑7890</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1.2rem">© <span id="y"></span> Karang Taruna Dusun Bogor. Dibuat dengan semangat pemuda ✨</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tahun otomatis
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Drawer mobile
+    const hamb = document.getElementById('hamb');
+    const drawer = document.getElementById('drawer');
+    const closeBtn = document.getElementById('closeDrawer');
+    function openDrawer(){drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');}
+    function closeDrawer(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');}
+    window.closeDrawer = closeDrawer;
+    hamb && hamb.addEventListener('click', openDrawer);
+    closeBtn && closeBtn.addEventListener('click', closeDrawer);
+    drawer && drawer.addEventListener('click', (e)=>{ if(e.target===drawer) closeDrawer(); });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Smooth anchor focus for a11y
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',()=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ setTimeout(()=>{ el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); el.removeAttribute('tabindex'); }, 420); }
+      });
+    });
+  </script>
+</body>
+</html>
